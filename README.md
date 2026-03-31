@@ -58,3 +58,17 @@ This repository contains experiments for four representative parametric linear P
    Parameters: pulse center, width, and variable-speed strength
 
 These cases are chosen to study steady elliptic behavior, pure transport, mixed transport-diffusion, and more challenging nonlinear characteristic transport.
+
+
+## Citation
+
+If you find this repository useful, please cite:
+
+@inproceedings{
+dwivedi2026kerneladaptive,
+title={Kernel-Adaptive Physics-Informed Meta-Learning for Parametric Linear {PDE}s},
+author={Vikas Dwivedi and Monica Sigovan and Sixou Bruno},
+booktitle={AI{\&}PDE: ICLR 2026 Workshop on AI and Partial Differential Equations},
+year={2026},
+url={https://openreview.net/forum?id=YyTEEVEVid}
+}
