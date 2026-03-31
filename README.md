@@ -64,6 +64,7 @@ These cases are chosen to study steady elliptic behavior, pure transport, mixed 
 
 If you find this repository useful, please cite:
 
+```bibtex
 @inproceedings{
 dwivedi2026kerneladaptive,
 title={Kernel-Adaptive Physics-Informed Meta-Learning for Parametric Linear {PDE}s},
