@@ -14,11 +14,3 @@ We introduce a hybrid physics-informed framework for parametric linear PDEs that
 If you find this repository useful, please cite:
 
 ```bibtex
-@inproceedings{
-dwivedi2026kerneladaptive,
-title={Kernel-Adaptive Physics-Informed Meta-Learning for Parametric Linear {PDE}s},
-author={Vikas Dwivedi and Monica Sigovan and Sixou Bruno},
-booktitle={AI{\&}PDE: ICLR 2026 Workshop on AI and Partial Differential Equations},
-year={2026},
-url={https://openreview.net/forum?id=YyTEEVEVid}
-}
