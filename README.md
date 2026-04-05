@@ -1,8 +1,8 @@
-# Kernel-Adaptive Physics-Informed Shallow Meta-Learning for Parametric Linear PDEs
+# Meta-Learned Basis Adaptation for Parametric Linear PDEs
 
 Official implementation for the paper:
 
-**Kernel-Adaptive Physics-Informed Shallow Meta-Learning for Parametric Linear PDEs**
+**Meta-Learned Basis Adaptation for Parametric Linear PDEs**
 ![KAPI overview](FIG_OPENER.png)
 
 ## Overview
