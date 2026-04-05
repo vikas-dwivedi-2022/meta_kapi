@@ -5,60 +5,8 @@ Official implementation for the paper:
 **Meta-Learned Basis Adaptation for Parametric Linear PDEs**
 ![KAPI overview](FIG_OPENER.png)
 
-## Overview
-
-Parametric families of linear partial differential equations arise in many scientific and engineering settings, where the solution varies continuously with physical parameters such as source location, transport speed, or diffusion strength. Standard physics-informed neural networks are usually trained separately for each new PDE instance, while operator-learning methods often rely on higher-dimensional latent representations that can be difficult to interpret.
-
-This repository implements **KAPI**, a **kernel-adaptive physics-informed meta-learning framework** for solving such parametric PDE families with a **shared shallow solver**. Instead of predicting a solution field directly with a deep network, KAPI uses a lightweight meta-network to generate **task-adaptive kernel geometry**. The final solution is then assembled as a linear combination of localized kernels.
-
-The main focus of this work is:
-
-- **amortized solving across parameter space**
-- **simple and shallow architecture**
-- **explicit and interpretable kernel geometry**
-- **physics-informed training without labeled solution data**
-
-In particular, KAPI makes it possible to inspect:
-
-- where kernels are placed,
-- how wide they are,
-- which kernels remain active,
-- and how this geometry changes with PDE parameters.
-
-## Main idea
-
-For a parameter vector `λ`, a lightweight meta-network generates some subset of:
-
-- kernel centers,
-- kernel widths,
-- sparsity gates,
-- amplitudes or coefficients.
-
-These quantities define a shallow localized basis, and the solution is synthesized through a linear kernel expansion. This keeps the representation compact and makes its behavior directly visualizable.
-
-Compared with related paradigms:
-
-- **vs. standard PINNs:** KAPI avoids retraining a new network for each task.
-- **vs. PIELM:** KAPI does not keep the hidden basis fixed; instead it adapts kernel geometry across tasks.
-- **vs. operator-learning networks:** KAPI is not learning a general map between function spaces; it is a **finite-dimensional parametric meta-solver** with explicit basis adaptation.
-
-## PDE families included
-
-This repository contains experiments for four representative parametric linear PDE families:
-
-1. **2D Poisson equation** with Gaussian source  
-   Parameters: source location and width
-
-2. **1D periodic linear advection** with Gaussian initial condition  
-   Parameters: pulse center and width
-
-3. **1D advection-diffusion**  
-   Parameters: advection speed and diffusion strength
-
-4. **Variable-speed advection** with predictor-corrector refinement  
-   Parameters: pulse center, width, and variable-speed strength
-
-These cases are chosen to study steady elliptic behavior, pure transport, mixed transport-diffusion, and more challenging nonlinear characteristic transport.
+## Abstract
+We introduce a hybrid physics-informed framework for parametric linear PDEs that combines a meta-learned predictor with a least-squares corrector. The full predictor, called KAPI (Kernel-Adaptive Physics-Informed meta-learner), is a shallow task-conditioned model that maps a query point and PDE parameters to a predicted solution value. Its task dependence is mediated through a lightweight internal meta-network that maps PDE parameters to an interpretable task-adaptive Gaussian basis geometry. The corrector then reuses this predictor-generated basis structure in an enriched hidden dictionary and solves the PDE through a one-shot physics-informed Extreme Learning Machine (PIELM) style least-squares step. Unlike iterative residual-adaptive refinement methods, which are typically tied to a single PDE instance, the proposed framework amortizes basis adaptation across an entire parametric family and deploys it in one shot at inference time after offline meta-training. We evaluate the method on four PDE families spanning diffusion-dominated, transport-dominated, mixed advection--diffusion, and variable-speed transport regimes. The predictor alone already captures meaningful physics by identifying localized source regions and transport-aligned spacetime structure, while the corrector further improves accuracy, often by one or more orders of magnitude, including in several extrapolative settings. Comparisons with parametric PINNs and physics-informed DeepONet, together with ablations against uniform-grid PIELM correctors and single-instance PINNs, show that the improvement arises specifically from predictor-guided basis adaptation. Overall, the proposed framework provides an interpretable and efficient approach for parametric PDE solving.
 
 
 ## Citation
